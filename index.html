@@ -1,0 +1,717 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>So You Want to Work in ESG?</title>
+<!-- Resource hints: preconnect for Google Fonts (avoids extra DNS+TLS round-trips),
+     preload for local stylesheet (high-priority fetch before render-blocking cascade) -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="dns-prefetch" href="https://fonts.gstatic.com">
+<!-- Local CSS: preload then apply; as="style" + onload pattern avoids render-blocking -->
+<link rel="preload" href="esg-styles.min.css" as="style">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=Bricolage+Grotesque:opsz,wght@12..96,300;12..96,400;12..96,500;12..96,600;12..96,700&display=swap">
+<link rel="stylesheet" href="esg-styles.min.css">
+<!-- Dev reference: esg-styles.css (readable source) | esg-styles.min.css (production, 25% smaller) -->
+<!-- Font detection: uses FontFace .load() to confirm Syne 800 is available -->
+<script>
+(function() {
+  var html = document.documentElement;
+  // Instant check — already cached on return visits
+  if (document.fonts && document.fonts.check && document.fonts.check('800 16px Syne')) {
+    html.classList.add('fonts-loaded');
+    return;
+  }
+  // Load Syne 800 explicitly and mark ready when confirmed
+  var timeout = setTimeout(function() { html.classList.add('fonts-loaded'); }, 3000);
+  if (document.fonts && document.fonts.load) {
+    document.fonts.load('800 16px Syne').then(function(fonts) {
+      clearTimeout(timeout);
+      html.classList.add('fonts-loaded');
+    }).catch(function() {
+      clearTimeout(timeout);
+      html.classList.add('fonts-loaded');
+    });
+  } else {
+    // No FontFace API — just wait for DOMContentLoaded
+    document.addEventListener('DOMContentLoaded', function() {
+      clearTimeout(timeout);
+      setTimeout(function() { html.classList.add('fonts-loaded'); }, 100);
+    });
+  }
+})();
+</script>
+</head>
+<body>
+
+<!-- ─── SKIP LINK ─────────────────────── -->
+<a href="#main-content" class="skip-link">Skip to main content</a>
+
+<!-- ─── PROGRESS BAR ───────────────────── -->
+<div id="progress-bar" role="progressbar" aria-label="Reading progress" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+
+<!-- ─── THEME TOGGLE ──────────────────── -->
+<button id="theme-toggle" aria-label="Toggle light/dark mode" title="Toggle theme">
+  <div class="toggle-track">
+    <span class="toggle-icon icon-moon" aria-hidden="true">🌙</span>
+    <span class="toggle-icon icon-sun" aria-hidden="true">☀️</span>
+    <div class="toggle-knob"></div>
+  </div>
+</button>
+
+<!-- ─── HERO ──────────────────────────── -->
+<header class="hero" role="banner">
+  <div class="hero-bg-text" aria-hidden="true">ESG</div>
+  <p class="hero-badge"><span aria-hidden="true">🌍</span> Career Guide · 2025 Edition</p>
+  <h1>So you want to<br><em>work in ESG?</em></h1>
+  <p class="hero-sub">A plain-English guide to one of the fastest-growing career fields on the planet — with real jobs, real salaries, and real case studies.</p>
+  <div class="hero-stats" role="list" aria-label="ESG industry statistics">
+    <div class="hero-stat" role="listitem">
+      <p class="hero-stat-num">$50T</p>
+      <p class="hero-stat-label">ESG assets by 2025</p>
+    </div>
+    <div class="hero-stat" role="listitem">
+      <p class="hero-stat-num">$36B</p>
+      <p class="hero-stat-label">ESG consulting market</p>
+    </div>
+    <div class="hero-stat" role="listitem">
+      <p class="hero-stat-num">99%</p>
+      <p class="hero-stat-label">S&amp;P 500 publish ESG reports</p>
+    </div>
+    <div class="hero-stat" role="listitem">
+      <p class="hero-stat-num">+40%</p>
+      <p class="hero-stat-label">Job growth 2021–2023</p>
+    </div>
+  </div>
+  <div class="scroll-hint" aria-hidden="true">
+    <span>Scroll to explore</span>
+    <svg class="scroll-chevron" viewBox="0 0 22 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M1 1L11 11L21 1" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+  </div>
+</header>
+
+<main id="main-content">
+
+<!-- ─── WHAT IS ESG ─────────────────────── -->
+<section class="esg-explainer" aria-labelledby="esg-heading">
+  <div class="esg-explainer-inner">
+    <span class="section-label">Start Here</span>
+    <h2 class="section-h2" id="esg-heading">What even is ESG?</h2>
+    <p class="section-lead">Think of ESG as a scorecard for how a company behaves — beyond just making money. It answers: is this company good for the planet, fair to people, and run honestly?</p>
+    <div class="esg-three" role="list" aria-label="The three ESG pillars">
+      <article class="esg-pillar" role="listitem">
+        <div class="pillar-letter" aria-hidden="true">E</div>
+        <p class="pillar-icon" aria-hidden="true">🌱</p>
+        <h3 class="pillar-name">Environmental</h3>
+        <p class="pillar-full">The Planet</p>
+        <p class="pillar-desc">How does a company impact the natural world? Does it pollute? How much carbon does it emit? Does it manage its water use?</p>
+        <ul class="pillar-examples" aria-label="Environmental examples">
+          <li class="pillar-ex">Carbon footprint (Scope 1, 2 &amp; 3 emissions)</li>
+          <li class="pillar-ex">Climate risk exposure (floods, heat, fires)</li>
+          <li class="pillar-ex">Waste, water, and biodiversity</li>
+          <li class="pillar-ex">Clean energy transition plans</li>
+        </ul>
+      </article>
+      <article class="esg-pillar" role="listitem">
+        <div class="pillar-letter" aria-hidden="true">S</div>
+        <p class="pillar-icon" aria-hidden="true">🤝</p>
+        <h3 class="pillar-name">Social</h3>
+        <p class="pillar-full">The People</p>
+        <p class="pillar-desc">How does the company treat its workers, suppliers, customers, and communities? Are human rights respected?</p>
+        <ul class="pillar-examples" aria-label="Social examples">
+          <li class="pillar-ex">Worker safety &amp; fair pay</li>
+          <li class="pillar-ex">Diversity, equity &amp; inclusion (DEI)</li>
+          <li class="pillar-ex">Supply chain labour standards</li>
+          <li class="pillar-ex">Community impact &amp; data privacy</li>
+        </ul>
+      </article>
+      <article class="esg-pillar" role="listitem">
+        <div class="pillar-letter" aria-hidden="true">G</div>
+        <p class="pillar-icon" aria-hidden="true">🏛️</p>
+        <h3 class="pillar-name">Governance</h3>
+        <p class="pillar-full">The Rules</p>
+        <p class="pillar-desc">Is the company run honestly and transparently? Are its leaders accountable? Does the board act in shareholders' interests?</p>
+        <ul class="pillar-examples" aria-label="Governance examples">
+          <li class="pillar-ex">Board independence &amp; diversity</li>
+          <li class="pillar-ex">Executive pay vs company performance</li>
+          <li class="pillar-ex">Anti-corruption &amp; ethics</li>
+          <li class="pillar-ex">Shareholder rights</li>
+        </ul>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ─── DAY IN THE LIFE ─────────────────── -->
+<section class="day-section" aria-labelledby="day-heading">
+  <div class="day-inner">
+    <span class="section-label">The Roles</span>
+    <h2 class="section-h2" id="day-heading">A day in the life</h2>
+    <p class="section-lead">Three very different jobs all wear the ESG badge. Pick a role to see what your Tuesday might actually look like.</p>
+    <div class="day-tabs" role="tablist" aria-label="ESG role day-in-the-life tabs">
+      <button class="day-tab active" type="button" id="tab-analyst" data-role="analyst" aria-selected="true" aria-controls="day-analyst" role="tab" tabindex="0"><svg class="icon icon--tab" viewBox="0 0 24 24" width="1em" height="1em" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M9 3h6M9 3v7l-5 9a1 1 0 00.9 1.5h14.2A1 1 0 0020 19l-5-9V3"/><path d="M8.5 14h7"/></svg> ESG Analyst</button>
+      <button class="day-tab" type="button" id="tab-consultant" data-role="consultant" aria-selected="false" aria-controls="day-consultant" role="tab" tabindex="-1"><svg class="icon icon--tab" viewBox="0 0 24 24" width="1em" height="1em" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M9 4L3 7v13l6-3 6 3 6-3V4l-6 3-6-3z"/><path d="M9 4v13M15 7v13"/></svg> ESG Consultant</button>
+      <button class="day-tab" type="button" id="tab-manager" data-role="manager" aria-selected="false" aria-controls="day-manager" role="tab" tabindex="-1"><svg class="icon icon--tab" viewBox="0 0 24 24" width="1em" height="1em" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="2" y="3" width="20" height="18" rx="2"/><path d="M8 3v18M2 9h6M2 15h6M12 9h8M12 13h8M12 17h5"/></svg> In-House ESG Manager</button>
+    </div>
+    <!-- ANALYST -->
+    <div class="day-content active" id="day-analyst" role="tabpanel" aria-labelledby="tab-analyst" tabindex="0">
+      <p class="day-context"><span aria-hidden="true">📍</span> You work for a ratings firm like MSCI or Sustainalytics. Today you're rating a large oil &amp; gas company.</p>
+      <ol class="day-timeline" aria-label="Analyst day schedule">
+        <li class="day-event">
+          <time class="day-time">9am</time>
+          <div class="day-dot day-dot--sprout" aria-hidden="true"></div>
+          <div class="day-body">
+            <h3 class="day-task">Pull latest emissions data from CDP database</h3>
+            <p class="day-detail">Cross-reference the company's self-reported Scope 1 &amp; 2 figures against satellite data and industry benchmarks. Flag any anomalies for follow-up.</p>
+            <span class="day-tag day-tag--green"><svg class="icon icon--tag" viewBox="0 0 24 24" width="1em" height="1em" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.76z"/></svg> Skill: Data Analysis</span>
+          </div>
+        </li>
+        <li class="day-event">
+          <time class="day-time">10:30</time>
+          <div class="day-dot day-dot--sky" aria-hidden="true"></div>
+          <div class="day-body">
+            <h3 class="day-task">Read the company's 200-page Sustainability Report</h3>
+            <p class="day-detail">Extract disclosure against GRI Standards and SASB Oil &amp; Gas framework. Note what's missing — gaps in disclosure are themselves a red flag for investors.</p>
+            <span class="day-tag day-tag--sky"><svg class="icon icon--tag" viewBox="0 0 24 24" width="1em" height="1em" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.76z"/></svg> Skill: Reporting Frameworks</span>
+          </div>
+        </li>
+        <li class="day-event">
+          <time class="day-time">1pm</time>
+          <div class="day-dot day-dot--amber" aria-hidden="true"></div>
+          <div class="day-body">
+            <h3 class="day-task">Update ESG rating model in Excel / Python</h3>
+            <p class="day-detail">Weight environmental score (40%), social (30%), governance (30%) based on sector exposure. Adjust for a new lawsuit over a pipeline spill — this tanks the Social sub-score.</p>
+            <span class="day-tag day-tag--amber"><svg class="icon icon--tag" viewBox="0 0 24 24" width="1em" height="1em" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.76z"/></svg> Skill: Financial Modelling</span>
+          </div>
+        </li>
+        <li class="day-event">
+          <time class="day-time">3pm</time>
+          <div class="day-dot day-dot--lavender" aria-hidden="true"></div>
+          <div class="day-body">
+            <h3 class="day-task">Write analyst note for portfolio managers</h3>
+            <p class="day-detail">"We downgrade ExxonMobil's ESG score from BBB to BB. Key driver: elevated controversy exposure (pipeline incident) and lack of credible short-term emissions targets vs peers."</p>
+            <span class="day-tag day-tag--lavender"><svg class="icon icon--tag" viewBox="0 0 24 24" width="1em" height="1em" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.76z"/></svg> Skill: Written Communication</span>
+          </div>
+        </li>
+        <li class="day-event">
+          <time class="day-time">4:30pm</time>
+          <div class="day-dot day-dot--rust" aria-hidden="true"></div>
+          <div class="day-body">
+            <h3 class="day-task">Regulatory scan: What does the new CSRD mandate?</h3>
+            <p class="day-detail">The EU's Corporate Sustainability Reporting Directive now requires ~50,000 companies to disclose ESG data. Update methodology to reflect new mandatory disclosure scope starting 2025.</p>
+            <span class="day-tag day-tag--rust"><svg class="icon icon--tag" viewBox="0 0 24 24" width="1em" height="1em" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.76z"/></svg> Skill: Regulatory Knowledge</span>
+          </div>
+        </li>
+      </ol>
+    </div>
+    <!-- CONSULTANT -->
+    <div class="day-content" id="day-consultant" role="tabpanel" aria-labelledby="tab-consultant" tabindex="0">
+      <p class="day-context"><span aria-hidden="true">📍</span> You work at PwC. Your client: a mid-size European manufacturer facing their first CSRD compliance deadline.</p>
+      <ol class="day-timeline" aria-label="Consultant day schedule">
+        <li class="day-event">
+          <time class="day-time">8:30am</time>
+          <div class="day-dot day-dot--amber" aria-hidden="true"></div>
+          <div class="day-body">
+            <h3 class="day-task">Client kickoff call — stakeholder mapping</h3>
+            <p class="day-detail">Meet the CFO, Head of Ops, and Legal team. Build a map of who owns what ESG data internally: HR owns employee data, procurement owns supply chain, finance owns energy bills.</p>
+            <span class="day-tag day-tag--amber"><svg class="icon icon--tag" viewBox="0 0 24 24" width="1em" height="1em" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.76z"/></svg> Skill: Stakeholder Management</span>
+          </div>
+        </li>
+        <li class="day-event">
+          <time class="day-time">11am</time>
+          <div class="day-dot day-dot--sprout" aria-hidden="true"></div>
+          <div class="day-body">
+            <h3 class="day-task">Double Materiality Assessment workshop</h3>
+            <p class="day-detail">Facilitate a session to identify which ESG topics matter most: both what impacts the company financially (financial materiality) AND what the company's impact is on the world (impact materiality). Required by CSRD.</p>
+            <span class="day-tag day-tag--green"><svg class="icon icon--tag" viewBox="0 0 24 24" width="1em" height="1em" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.76z"/></svg> Skill: Facilitation &amp; Frameworks</span>
+          </div>
+        </li>
+        <li class="day-event">
+          <time class="day-time">2pm</time>
+          <div class="day-dot day-dot--sky" aria-hidden="true"></div>
+          <div class="day-body">
+            <h3 class="day-task">Gap analysis: current disclosures vs CSRD requirements</h3>
+            <p class="day-detail">Build a spreadsheet mapping 82 ESRS data points. Client currently discloses 23 of them. Flag 59 gaps — 15 are "critical" (fines risk), 44 are "develop over 2 years".</p>
+            <span class="day-tag day-tag--sky"><svg class="icon icon--tag" viewBox="0 0 24 24" width="1em" height="1em" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.76z"/></svg> Skill: Regulatory Expertise</span>
+          </div>
+        </li>
+        <li class="day-event">
+          <time class="day-time">4pm</time>
+          <div class="day-dot day-dot--lavender" aria-hidden="true"></div>
+          <div class="day-body">
+            <h3 class="day-task">Build the roadmap deck for board presentation</h3>
+            <p class="day-detail">Translate the gap analysis into a 3-year action plan with budget, owners, and KPIs. The board cares about: avoiding fines, investor confidence, and "not being in the newspaper for the wrong reasons."</p>
+            <span class="day-tag day-tag--lavender"><svg class="icon icon--tag" viewBox="0 0 24 24" width="1em" height="1em" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.76z"/></svg> Skill: Executive Comms</span>
+          </div>
+        </li>
+      </ol>
+    </div>
+    <!-- MANAGER -->
+    <div class="day-content" id="day-manager" role="tabpanel" aria-labelledby="tab-manager" tabindex="0">
+      <p class="day-context"><span aria-hidden="true">📍</span> You're Head of ESG at a FTSE 250 retailer. Annual sustainability report is due in 6 weeks.</p>
+      <ol class="day-timeline" aria-label="In-house manager day schedule">
+        <li class="day-event">
+          <time class="day-time">9am</time>
+          <div class="day-dot day-dot--sprout" aria-hidden="true"></div>
+          <div class="day-body">
+            <h3 class="day-task">Collect Scope 3 data from 400+ suppliers</h3>
+            <p class="day-detail">Chase 12 suppliers who haven't submitted emissions data. Scope 3 = your supply chain's carbon. For a retailer, it's typically 90%+ of total emissions. You can't report without it.</p>
+            <span class="day-tag day-tag--green"><svg class="icon icon--tag" viewBox="0 0 24 24" width="1em" height="1em" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.76z"/></svg> Skill: Supply Chain Management</span>
+          </div>
+        </li>
+        <li class="day-event">
+          <time class="day-time">10:30am</time>
+          <div class="day-dot day-dot--amber" aria-hidden="true"></div>
+          <div class="day-body">
+            <h3 class="day-task">Investor call — questions on DEI targets</h3>
+            <p class="day-detail">A major pension fund asks why female representation on the board dropped from 40% to 33%. You explain the departure and the recruitment plan. Investors want to know you're taking it seriously.</p>
+            <span class="day-tag day-tag--amber"><svg class="icon icon--tag" viewBox="0 0 24 24" width="1em" height="1em" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.76z"/></svg> Skill: Investor Relations</span>
+          </div>
+        </li>
+        <li class="day-event">
+          <time class="day-time">1:30pm</time>
+          <div class="day-dot day-dot--rust" aria-hidden="true"></div>
+          <div class="day-body">
+            <h3 class="day-task">Internal review: are we on track to cut emissions 50% by 2030?</h3>
+            <p class="day-detail">Build progress dashboard. You're at -18% since 2019 baseline. Need to accelerate. Recommend switching distribution fleet to EVs — saves £2.4M/yr AND reduces Scope 1 by 22%.</p>
+            <span class="day-tag day-tag--rust"><svg class="icon icon--tag" viewBox="0 0 24 24" width="1em" height="1em" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.76z"/></svg> Skill: Strategy &amp; Business Case</span>
+          </div>
+        </li>
+        <li class="day-event">
+          <time class="day-time">3:30pm</time>
+          <div class="day-dot day-dot--lavender" aria-hidden="true"></div>
+          <div class="day-body">
+            <h3 class="day-task">Review draft sustainability report with external auditors</h3>
+            <p class="day-detail">Third-party assurance is now mandatory. The auditors flag that your water intensity figure can't be verified because the data collection methodology changed mid-year. Fix before publishing.</p>
+            <span class="day-tag day-tag--lavender"><svg class="icon icon--tag" viewBox="0 0 24 24" width="1em" height="1em" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.76z"/></svg> Skill: Reporting &amp; Assurance</span>
+          </div>
+        </li>
+      </ol>
+    </div>
+  </div>
+</section>
+
+<!-- ─── CASE STUDIES ─────────────────────── -->
+<section class="cases-bg" aria-labelledby="cases-heading">
+  <div class="cases-inner">
+    <span class="section-label">Real World</span>
+    <h2 class="section-h2" id="cases-heading">Case studies: ESG in action</h2>
+    <p class="section-lead">Here's how ESG professionals actually changed things at real companies you've heard of.</p>
+    <div class="case-grid reveal">
+      <article class="case-card">
+        <header class="case-header">
+          <div class="case-logo case-logo--green" aria-hidden="true">☕</div>
+          <div><h3 class="case-company">Starbucks</h3><p class="case-type">Retail · Environmental</p></div>
+        </header>
+        <div class="case-body">
+          <div class="case-problem"><h4 class="case-problem-label">The Problem</h4><p class="case-problem-text">Starbucks operated 36,000+ stores globally with no standardised framework to measure or verify environmental performance across them.</p></div>
+          <div class="case-solution"><h4 class="case-solution-label">What ESG professionals did</h4><p class="case-solution-text">Working with WWF and SCS Global Services, ESG consultants developed the "Greener Stores" framework — standardising low-energy equipment, water-saving fixtures, and waste diversion across all locations. Rigorous third-party verification was built in from day one to prevent greenwashing claims.</p></div>
+          <ul class="case-result" aria-label="Starbucks ESG outcomes"><li class="result-pill">6,091 stores certified</li><li class="result-pill">~30% energy reduction</li><li class="result-pill">$60M saved annually</li></ul>
+        </div>
+      </article>
+      <article class="case-card">
+        <header class="case-header">
+          <div class="case-logo case-logo--purple" aria-hidden="true">⚡</div>
+          <div><h3 class="case-company">Tesla</h3><p class="case-type">Automotive · Carbon Accounting</p></div>
+        </header>
+        <div class="case-body">
+          <div class="case-problem"><h4 class="case-problem-label">The Problem</h4><p class="case-problem-text">EV companies face unique ESG scrutiny — their products reduce emissions, but what about manufacturing and charging? Investors wanted rigorous, verifiable impact data, not marketing claims.</p></div>
+          <div class="case-solution"><h4 class="case-solution-label">What ESG professionals did</h4><p class="case-solution-text">Tesla's ESG team developed "avoided emissions" methodology — calculating how much CO₂ customers avoided by driving Teslas instead of combustion vehicles. They tracked factory-level renewable energy conversion at Gigafactory Berlin and published a verified annual impact update with third-party data sources.</p></div>
+          <ul class="case-result" aria-label="Tesla ESG outcomes"><li class="result-pill">30M tonnes CO₂ avoided in 2024</li><li class="result-pill">100% renewable Superchargers</li></ul>
+        </div>
+      </article>
+      <article class="case-card">
+        <header class="case-header">
+          <div class="case-logo case-logo--peach" aria-hidden="true">🏦</div>
+          <div><h3 class="case-company">HSBC</h3><p class="case-type">Banking · Sustainable Finance</p></div>
+        </header>
+        <div class="case-body">
+          <div class="case-problem"><h4 class="case-problem-label">The Problem</h4><p class="case-problem-text">Banks face a unique ESG challenge: their biggest impact isn't their own offices — it's the companies they lend to and invest in ("financed emissions"). Regulators and investors started demanding accountability for these too.</p></div>
+          <div class="case-solution"><h4 class="case-solution-label">What ESG professionals did</h4><p class="case-solution-text">HSBC's ESG team published a net-zero roadmap covering both operational emissions (targeting neutrality by 2025) and financed emissions (neutrality by 2050). They introduced a 29% absolute reduction target for oil &amp; gas financed emissions by 2030 — the first such target by a global bank — and earned an MSCI AA rating for ESG practices.</p></div>
+          <ul class="case-result" aria-label="HSBC ESG outcomes"><li class="result-pill">MSCI AA Rating</li><li class="result-pill">$982M sustainable finance income</li><li class="result-pill">Industry-first Scope 3 targets</li></ul>
+        </div>
+      </article>
+      <article class="case-card">
+        <header class="case-header">
+          <div class="case-logo case-logo--cream" aria-hidden="true">🛋️</div>
+          <div><h3 class="case-company">IKEA</h3><p class="case-type">Retail · Supply Chain</p></div>
+        </header>
+        <div class="case-body">
+          <div class="case-problem"><h4 class="case-problem-label">The Problem</h4><p class="case-problem-text">IKEA sources from thousands of suppliers in 50+ countries. How do you ensure child labour, unsafe factories, or illegal logging don't exist somewhere in that vast network?</p></div>
+          <div class="case-solution"><h4 class="case-solution-label">What ESG professionals did</h4><p class="case-solution-text">ESG specialists developed "IWAY" — IKEA's supplier code of conduct now in its 6th version. Suppliers are audited against core worker rights, safety, work-life balance, water/waste management, and child labour prevention. Failing suppliers get a development plan; repeat failures lose IKEA contracts.</p></div>
+          <ul class="case-result" aria-label="IKEA ESG outcomes"><li class="result-pill">20+ years in operation</li><li class="result-pill">All suppliers must comply</li><li class="result-pill">Regular independent audits</li></ul>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ─── SKILLS ─────────────────────────── -->
+<section class="skills-section" aria-labelledby="skills-heading">
+  <div class="skills-inner">
+    <span class="section-label">What You Need to Know</span>
+    <h2 class="section-h2" id="skills-heading">The skills that get you hired</h2>
+    <p class="section-lead">ESG is genuinely interdisciplinary. Here's what employers actually look for — and how hard each is to develop.</p>
+    <ul class="skills-grid" aria-label="ESG skills">
+      <li class="skill-card"><span class="skill-icon" aria-hidden="true"><svg class="icon icon--skill" viewBox="0 0 24 24" width="1em" height="1em" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M3 3v18h18"/><rect x="7" y="10" width="3" height="8" rx="1"/><rect x="12" y="6" width="3" height="12" rx="1"/><rect x="17" y="13" width="3" height="5" rx="1"/></svg></p><h3 class="skill-name">Data Analysis</h3><p class="skill-level">Importance: Essential</p><div class="skill-bar-wrap" role="meter" aria-label="Importance 90%" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100"><div class="skill-bar" style="--bar-width:90%"></div></div><p class="skill-desc">Excel, Python, or R for processing large ESG datasets. You'll constantly clean messy corporate data and spot what's missing or implausible.</p></li>
+      <li class="skill-card"><span class="skill-icon" aria-hidden="true"><svg class="icon icon--skill" viewBox="0 0 24 24" width="1em" height="1em" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="9"/><path d="M12 7v10M9.5 9.5A2.5 2.5 0 0112 8a2.5 2.5 0 010 5 2.5 2.5 0 010 5 2.5 2.5 0 01-2.5-1.5"/></svg></p><h3 class="skill-name">Financial Literacy</h3><p class="skill-level">Importance: Very High</p><div class="skill-bar-wrap" role="meter" aria-label="Importance 85%" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100"><div class="skill-bar" style="--bar-width:85%"></div></div><p class="skill-desc">Understanding P&amp;L statements, risk models, and how ESG factors translate into financial risk or opportunity. Speaks the language of the boardroom.</p></li>
+      <li class="skill-card"><span class="skill-icon" aria-hidden="true"><svg class="icon icon--skill" viewBox="0 0 24 24" width="1em" height="1em" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 3v18M3 6l9-3 9 3M5 10l-2 5h4L5 10zM19 10l-2 5h4l-2-5zM8 21h8"/></svg></p><h3 class="skill-name">Regulatory Knowledge</h3><p class="skill-level">Importance: Very High</p><div class="skill-bar-wrap" role="meter" aria-label="Importance 82%" aria-valuenow="82" aria-valuemin="0" aria-valuemax="100"><div class="skill-bar" style="--bar-width:82%"></div></div><p class="skill-desc">CSRD, SEC climate rules, ISSB standards, EU Taxonomy. You don't need a law degree, but you need to read and understand complex regulatory texts.</p></li>
+      <li class="skill-card"><span class="skill-icon" aria-hidden="true"><svg class="icon icon--skill" viewBox="0 0 24 24" width="1em" height="1em" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="8" y="2" width="8" height="4" rx="1"/><path d="M8 4H6a2 2 0 00-2 2v14a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-2"/><path d="M9 12h6M9 16h4"/></svg></p><h3 class="skill-name">Reporting Frameworks</h3><p class="skill-level">Importance: High</p><div class="skill-bar-wrap" role="meter" aria-label="Importance 75%" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"><div class="skill-bar" style="--bar-width:75%"></div></div><p class="skill-desc">GRI, SASB, TCFD, CDP, ISSB. Each framework has different metrics and audiences. Knowing when to use which one is a core competency.</p></li>
+      <li class="skill-card"><span class="skill-icon" aria-hidden="true"><svg class="icon icon--skill" viewBox="0 0 24 24" width="1em" height="1em" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="9"/><path d="M3.6 9h16.8M3.6 15h16.8M12 3c-2.4 3-4 5.5-4 9s1.6 6 4 9M12 3c2.4 3 4 5.5 4 9s-1.6 6-4 9"/></svg></p><h3 class="skill-name">Climate Science Basics</h3><p class="skill-level">Importance: High</p><div class="skill-bar-wrap" role="meter" aria-label="Importance 70%" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100"><div class="skill-bar" style="--bar-width:70%"></div></div><p class="skill-desc">Understanding Scope 1/2/3 emissions, physical climate risk, transition risk, carbon markets, and net-zero concepts. You don't need a PhD — but you need the fundamentals.</p></li>
+      <li class="skill-card"><span class="skill-icon" aria-hidden="true"><svg class="icon icon--skill" viewBox="0 0 24 24" width="1em" height="1em" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M15.232 5.232l3.536 3.536M9 13l6.5-6.5a2 2 0 012.829 2.829L11.5 16H9v-3z"/><path d="M3 21h18"/></svg></p><h3 class="skill-name">Written Communication</h3><p class="skill-level">Importance: Essential</p><div class="skill-bar-wrap" role="meter" aria-label="Importance 88%" aria-valuenow="88" aria-valuemin="0" aria-valuemax="100"><div class="skill-bar" style="--bar-width:88%"></div></div><p class="skill-desc">Translating complex ESG data into clear, credible reports for investors, boards, and the public. Bad writing = your analysis gets ignored.</p></li>
+    </ul>
+  </div>
+</section>
+
+<!-- ─── CAREER PATH ────────────────────── -->
+<section class="career-section" aria-labelledby="career-heading">
+  <div class="career-inner">
+    <span class="section-label">Your Roadmap</span>
+    <h2 class="section-h2" id="career-heading">The career ladder</h2>
+    <p class="section-lead">Here's a realistic path from zero to ESG leader — with salary benchmarks based on real market data.</p>
+    <ol class="career-ladder reveal" aria-label="ESG career progression">
+      <li class="career-step">
+        <div class="step-marker"><div class="step-circle" aria-hidden="true">0</div></div>
+        <div class="step-body">
+          <h3 class="step-title">Break In — Now</h3>
+          <p class="step-time">Before your first ESG job</p>
+          <p class="step-desc">You don't need an ESG-specific degree. Backgrounds in finance, environmental science, economics, law, or social science all work. Start building knowledge and proof of interest now — certifications, volunteer work, or a passion project matter more than you think.</p>
+          <ul class="step-actions" aria-label="Actions to take now">
+            <li class="step-action"><span aria-hidden="true">📚</span> CFA Certificate in ESG Investing (~130 hrs)</li>
+            <li class="step-action"><span aria-hidden="true">🎓</span> GRI Sustainability Reporting course</li>
+            <li class="step-action"><span aria-hidden="true">📰</span> Follow: CDP, GRI, MSCI ESG Research</li>
+            <li class="step-action"><span aria-hidden="true">💼</span> Internship at sustainability consultancy</li>
+          </ul>
+        </div>
+      </li>
+      <li class="career-step">
+        <div class="step-marker"><div class="step-circle" aria-hidden="true">1</div></div>
+        <div class="step-body">
+          <h3 class="step-title">ESG Analyst / Associate</h3>
+          <p class="step-time">Years 0–3</p>
+          <p class="step-desc">Your first real role. You're doing the grunt work — collecting data, building models, researching frameworks, writing initial reports. You're learning fast. Common entry points: ESG ratings firms (MSCI, Sustainalytics), consulting firms' sustainability teams, or in-house analyst roles at large companies.</p>
+          <p class="step-salary"><span aria-hidden="true">💵</span> $62K – $85K / year (US)</p>
+          <ul class="step-actions" aria-label="Actions at this stage">
+            <li class="step-action">Build: Excel &amp; Python skills</li>
+            <li class="step-action">Learn: One sector deeply (e.g. energy, finance)</li>
+            <li class="step-action">Earn: CESGA or GARP SCR certification</li>
+          </ul>
+        </div>
+      </li>
+      <li class="career-step">
+        <div class="step-marker"><div class="step-circle" aria-hidden="true">2</div></div>
+        <div class="step-body">
+          <h3 class="step-title">Senior Analyst / ESG Consultant</h3>
+          <p class="step-time">Years 3–7</p>
+          <p class="step-desc">You're now leading pieces of projects, mentoring juniors, and building client relationships. If in consulting, you're running workshops and writing strategy decks for boards. If at a ratings firm, you're owning entire sector coverage. Your expertise in one ESG domain (e.g. climate risk, governance) becomes a calling card.</p>
+          <p class="step-salary"><span aria-hidden="true">💵</span> $85K – $125K / year (US)</p>
+          <ul class="step-actions" aria-label="Actions at this stage">
+            <li class="step-action">Specialise: Climate risk, supply chain, or governance</li>
+            <li class="step-action">Network: Industry conferences (PRI in Person, GreenBiz)</li>
+            <li class="step-action">Publish: Op-eds, LinkedIn thought leadership</li>
+          </ul>
+        </div>
+      </li>
+      <li class="career-step">
+        <div class="step-marker"><div class="step-circle" aria-hidden="true">3</div></div>
+        <div class="step-body">
+          <h3 class="step-title">ESG Manager / Director</h3>
+          <p class="step-time">Years 7–12</p>
+          <p class="step-desc">You're running a team or a programme. In-house, this is the Head of ESG role — owning the company's entire sustainability strategy, sitting in leadership meetings, presenting to the board. In consulting, you're a client partner managing multiple accounts. The job becomes more about influence, negotiation, and organisational change than analysis.</p>
+          <p class="step-salary"><span aria-hidden="true">💵</span> $125K – $160K / year (US)</p>
+        </div>
+      </li>
+      <li class="career-step">
+        <div class="step-marker"><div class="step-circle" aria-hidden="true">✦</div></div>
+        <div class="step-body">
+          <h3 class="step-title">Chief Sustainability Officer / ESG Partner</h3>
+          <p class="step-time">12+ years</p>
+          <p class="step-desc">The top of the ESG ladder. As CSO, you sit at the C-suite table, shaping company strategy, responding to activist investors, and representing the company publicly. ESG is no longer a function — it's embedded in how the whole business operates. Salary ranges widely based on company size.</p>
+          <p class="step-salary"><span aria-hidden="true">💵</span> $160K – $300K+ / year (US)</p>
+        </div>
+      </li>
+    </ol>
+  </div>
+</section>
+
+<!-- ─── CERTIFICATIONS ─────────────────── -->
+<section class="certs-section" aria-labelledby="certs-heading">
+  <div class="certs-inner">
+    <span class="section-label">How to Get Credible</span>
+    <h2 class="section-h2" id="certs-heading">The certifications worth getting</h2>
+    <p class="section-lead">These are globally recognised and will actually help you get interviews. Pick the one that fits your background.</p>
+    <ul class="certs-grid reveal" aria-label="ESG certifications">
+      <li class="cert-card">
+        <div class="cert-badge cert-badge--blue" aria-hidden="true">📘</div>
+        <div>
+          <h3 class="cert-name">CFA Certificate in ESG Investing</h3>
+          <p class="cert-org">CFA Institute · Global</p>
+          <p class="cert-desc">The gold standard for finance professionals moving into ESG. Covers ESG integration into portfolio construction, stewardship, and reporting. Requires ~130 hours of self-study. Highly respected at asset managers and banks.</p>
+          <div class="cert-meta"><span class="cert-pill" class="cert-pill cert-pill--navy">Best for: Finance backgrounds</span><span class="cert-pill" class="cert-pill cert-pill--sprout">~$895 exam fee</span></div>
+        </div>
+      </li>
+      <li class="cert-card">
+        <div class="cert-badge cert-badge--green" aria-hidden="true">🌱</div>
+        <div>
+          <h3 class="cert-name">CESGA — Certified ESG Analyst</h3>
+          <p class="cert-org">EFFAS · European-focused</p>
+          <p class="cert-desc">Comprehensive across all three ESG pillars, with a strong emphasis on financial integration and ESG ratings methodology. Very well recognised in European markets and consulting firms. Includes modules on climate risk and regulatory frameworks.</p>
+          <div class="cert-meta"><span class="cert-pill" class="cert-pill cert-pill--moss">Best for: Analysts &amp; consultants</span><span class="cert-pill" class="cert-pill cert-pill--sprout">~€700 exam fee</span></div>
+        </div>
+      </li>
+      <li class="cert-card">
+        <div class="cert-badge cert-badge--amber" aria-hidden="true">📊</div>
+        <div>
+          <h3 class="cert-name">GARP SCR — Sustainability &amp; Climate Risk</h3>
+          <p class="cert-org">GARP · Global</p>
+          <p class="cert-desc">Focused on climate and sustainability risk from a risk management lens. Ideal if you're moving from traditional risk roles (credit, market risk) into ESG. Growing recognition in banking and insurance sectors. Exam has an 81% pass rate.</p>
+          <div class="cert-meta"><span class="cert-pill" class="cert-pill cert-pill--amber">Best for: Risk professionals</span><span class="cert-pill" class="cert-pill cert-pill--sprout">~$475 exam fee</span></div>
+        </div>
+      </li>
+      <li class="cert-card">
+        <div class="cert-badge cert-badge--red" aria-hidden="true">🌿</div>
+        <div>
+          <h3 class="cert-name">GRI Sustainability Reporting</h3>
+          <p class="cert-org">Global Reporting Initiative</p>
+          <p class="cert-desc">GRI is the world's most widely used sustainability reporting framework. Their professional learning programmes cover how to build and verify a GRI-aligned report. Practical and immediately applicable — useful if you're going in-house or into consulting.</p>
+          <div class="cert-meta"><span class="cert-pill" class="cert-pill cert-pill--rust">Best for: In-house &amp; consultants</span><span class="cert-pill" class="cert-pill cert-pill--sprout">Free to ~€300</span></div>
+        </div>
+      </li>
+    </ul>
+  </div>
+</section>
+
+<!-- ─── WHO'S HIRING ────────────────────── -->
+<section class="hiring-section" aria-labelledby="hiring-heading">
+  <div class="hiring-inner">
+    <span class="section-label">Where the Jobs Are</span>
+    <h2 class="section-h2" id="hiring-heading">Who's actually hiring</h2>
+    <p class="section-lead">ESG talent is demanded across four very different employer ecosystems. Each has its own culture, pay scale, and career trajectory.</p>
+    <div class="hiring-tiles" role="list" aria-label="ESG employer types">
+      <article class="hiring-tile" role="listitem">
+        <span class="tile-emoji" aria-hidden="true"><svg class="icon icon--tile" viewBox="0 0 24 24" width="1em" height="1em" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M3 9l9-6 9 6v1H3V9z"/><path d="M5 10v7M9 10v7M15 10v7M19 10v7M3 17h18M3 21h18"/></svg>
+        <h3 class="tile-title">Asset Managers &amp; Investors</h3>
+        <p class="tile-desc">The original ESG employers. They hire analysts to integrate ESG into investment decisions, run shareholder engagement programmes, and manage sustainable fund products. High pay. Intellectually rigorous. Heavy on financial modelling.</p>
+        <ul class="tile-companies" aria-label="Example employers"><li class="tile-company">BlackRock, Vanguard, Schroders</li><li class="tile-company">Pension funds &amp; sovereign wealth funds</li><li class="tile-company">Impact investors (Triodos, Impax)</li><li class="tile-company">Private equity &amp; real estate firms</li></ul>
+        <h4 class="tile-roles-label">Typical Roles</h4>
+        <ul class="tile-roles" aria-label="Typical roles"><li class="tile-role">ESG Research Analyst</li><li class="tile-role">Sustainable Investing Specialist</li><li class="tile-role">Stewardship Analyst</li></ul>
+      </article>
+      <article class="hiring-tile" role="listitem">
+        <span class="tile-emoji" aria-hidden="true"><svg class="icon icon--tile" viewBox="0 0 24 24" width="1em" height="1em" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v2"/></svg>
+        <h3 class="tile-title">Consulting Firms</h3>
+        <p class="tile-desc">Strategy consulting firms have built major sustainability practices. Fast career progression. You'll work across multiple industries and geographies. Great for building broad expertise quickly. Demanding hours, but excellent training.</p>
+        <ul class="tile-companies" aria-label="Example employers"><li class="tile-company">Big 4: PwC, Deloitte, KPMG, EY</li><li class="tile-company">Strategy: McKinsey, BCG, Bain</li><li class="tile-company">Specialists: ERM, South Pole, Anthesis</li><li class="tile-company">Boutiques: Verdantix, Carnstone</li></ul>
+        <h4 class="tile-roles-label">Typical Roles</h4>
+        <ul class="tile-roles" aria-label="Typical roles"><li class="tile-role">ESG Consultant</li><li class="tile-role">Sustainability Advisor</li><li class="tile-role">Climate Risk Specialist</li></ul>
+      </article>
+      <article class="hiring-tile" role="listitem">
+        <span class="tile-emoji" aria-hidden="true"><svg class="icon icon--tile" viewBox="0 0 24 24" width="1em" height="1em" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="3" y="3" width="13" height="18" rx="1"/><path d="M16 8h5v13h-5M7 8v.01M11 8v.01M7 12v.01M11 12v.01M7 16v.01M11 16v.01"/></svg>
+        <h3 class="tile-title">Large Corporates (In-House)</h3>
+        <p class="tile-desc">As regulation forces disclosure, FTSE 100 and Fortune 500 companies are building full ESG teams. More stable hours than consulting. You own the outcome — not just advise on it. Great for people who want to drive change inside an organisation.</p>
+        <ul class="tile-companies" aria-label="Example employers"><li class="tile-company">Banks, insurers (finance)</li><li class="tile-company">Energy, utilities, oil &amp; gas</li><li class="tile-company">Consumer goods, retail, food</li><li class="tile-company">Real estate, infrastructure, tech</li></ul>
+        <h4 class="tile-roles-label">Typical Roles</h4>
+        <ul class="tile-roles" aria-label="Typical roles"><li class="tile-role">ESG Manager</li><li class="tile-role">Sustainability Reporting Lead</li><li class="tile-role">Head of ESG</li></ul>
+      </article>
+      <article class="hiring-tile" role="listitem">
+        <span class="tile-emoji" aria-hidden="true"><svg class="icon icon--tile" viewBox="0 0 24 24" width="1em" height="1em" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M2 20h.01M7 20v-4M12 20V10M17 20V4M22 20v-2"/></svg>
+        <h3 class="tile-title">ESG Data &amp; Ratings Firms</h3>
+        <p class="tile-desc">The infrastructure layer of the ESG industry. These firms build the ratings, datasets, and analytics products that everyone else uses. Strong analytical culture. You'll become an expert in methodology and sector coverage. Increasingly using AI.</p>
+        <ul class="tile-companies" aria-label="Example employers"><li class="tile-company">MSCI ESG Research</li><li class="tile-company">Sustainalytics (Morningstar)</li><li class="tile-company">S&amp;P Global Sustainable1</li><li class="tile-company">Bloomberg ESG, ISS, RepRisk</li></ul>
+        <h4 class="tile-roles-label">Typical Roles</h4>
+        <ul class="tile-roles" aria-label="Typical roles"><li class="tile-role">ESG Research Analyst</li><li class="tile-role">ESG Data Analyst</li><li class="tile-role">Methodology Specialist</li></ul>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ─── MYTHS ───────────────────────────── -->
+<section class="myths-section" aria-labelledby="myths-heading">
+  <div class="myths-inner">
+    <span class="section-label">Clearing the Air</span>
+    <h2 class="section-h2" id="myths-heading">Myths about ESG careers</h2>
+    <p class="section-lead">You've probably heard some of these. Let's put them to rest.</p>
+    <div class="myths-grid">
+      <article class="myth-card"><div class="myth-top"><p class="myth-label"><svg class="icon icon--myth" viewBox="0 0 24 24" width="1em" height="1em" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="9"/><path d="M15 9l-6 6M9 9l6 6"/></svg> Myth</p><p class="myth-text">"You need an environmental science degree"</p></div><div class="myth-bottom"><p class="reality-label"><svg class="icon icon--reality" viewBox="0 0 24 24" width="1em" height="1em" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="9"/><path d="M8 12l3 3 5-5"/></svg> Reality</p><p class="reality-text">Finance, economics, law, social science, and even engineering are equally valid entry points. ESG needs people who can speak to investors and boards — financial literacy is often more valued than environmental credentials at entry level.</p></div></article>
+      <article class="myth-card"><div class="myth-top"><p class="myth-label"><svg class="icon icon--myth" viewBox="0 0 24 24" width="1em" height="1em" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="9"/><path d="M15 9l-6 6M9 9l6 6"/></svg> Myth</p><p class="myth-text">"ESG is just box-ticking and greenwashing"</p></div><div class="myth-bottom"><p class="reality-label"><svg class="icon icon--reality" viewBox="0 0 24 24" width="1em" height="1em" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="9"/><path d="M8 12l3 3 5-5"/></svg> Reality</p><p class="reality-text">Regulation is making this harder and harder to get away with. CSRD, SEC climate rules, and ISSB standards require third-party verified data. ESG professionals spend significant effort <em>preventing</em> greenwashing — it's one of the core challenges of the job.</p></div></article>
+      <article class="myth-card"><div class="myth-top"><p class="myth-label"><svg class="icon icon--myth" viewBox="0 0 24 24" width="1em" height="1em" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="9"/><path d="M15 9l-6 6M9 9l6 6"/></svg> Myth</p><p class="myth-text">"ESG is just a trend that's fading"</p></div><div class="myth-bottom"><p class="reality-label"><svg class="icon icon--reality" viewBox="0 0 24 24" width="1em" height="1em" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="9"/><path d="M8 12l3 3 5-5"/></svg> Reality</p><p class="reality-text">Mandatory reporting laws now apply to most large companies in the EU, UK, and increasingly the US. 99% of S&amp;P 500 companies publish ESG reports. Whether or not the term "ESG" stays fashionable, the underlying regulatory and investor requirements are structural and growing.</p></div></article>
+      <article class="myth-card"><div class="myth-top"><p class="myth-label"><svg class="icon icon--myth" viewBox="0 0 24 24" width="1em" height="1em" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="9"/><path d="M15 9l-6 6M9 9l6 6"/></svg> Myth</p><p class="myth-text">"ESG jobs don't pay well"</p></div><div class="myth-bottom"><p class="reality-label"><svg class="icon icon--reality" viewBox="0 0 24 24" width="1em" height="1em" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="9"/><path d="M8 12l3 3 5-5"/></svg> Reality</p><p class="reality-text">Entry-level ESG analysts earn $62K–$85K in the US. Senior managers earn $125K–$160K. CSOs at large companies can earn $200K+. At asset managers and top consulting firms, total compensation is competitive with equivalent non-ESG roles.</p></div></article>
+      <article class="myth-card"><div class="myth-top"><p class="myth-label"><svg class="icon icon--myth" viewBox="0 0 24 24" width="1em" height="1em" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="9"/><path d="M15 9l-6 6M9 9l6 6"/></svg> Myth</p><p class="myth-text">"You need years of experience to get in"</p></div><div class="myth-bottom"><p class="reality-label"><svg class="icon icon--reality" viewBox="0 0 24 24" width="1em" height="1em" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="9"/><path d="M8 12l3 3 5-5"/></svg> Reality</p><p class="reality-text">Entry-level roles exist — but they're competitive. A relevant certification (CFA ESG or CESGA), demonstrable knowledge of one framework (GRI, TCFD), and a focused cover letter can get you there. Boutique sustainability consultancies are often the best first stepping stone.</p></div></article>
+      <article class="myth-card"><div class="myth-top"><p class="myth-label"><svg class="icon icon--myth" viewBox="0 0 24 24" width="1em" height="1em" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="9"/><path d="M15 9l-6 6M9 9l6 6"/></svg> Myth</p><p class="myth-text">"ESG is only about the environment"</p></div><div class="myth-bottom"><p class="reality-label"><svg class="icon icon--reality" viewBox="0 0 24 24" width="1em" height="1em" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="9"/><path d="M8 12l3 3 5-5"/></svg> Reality</p><p class="reality-text">The S (Social) and G (Governance) are equally important — and often under-resourced. Human rights in supply chains, board diversity, pay equity, anti-corruption, and data privacy are all ESG issues. Many specialists build entire careers on the Social or Governance pillars alone.</p></div></article>
+    </div>
+  </div>
+</section>
+
+<!-- ─── CTA ─────────────────────────────── -->
+<section class="cta-section" aria-labelledby="cta-heading">
+  <div class="cta-inner">
+    <h2 class="cta-h2" id="cta-heading">Ready to start?<br>Here's your first week.</h2>
+    <p class="cta-sub">You don't need to change careers overnight. These five steps will give you genuine traction in ESG — starting today.</p>
+    <ol class="cta-steps" aria-label="First steps into ESG">
+      <li class="cta-step"><span class="cta-step-num" aria-hidden="true">1</span><p>Read one sustainability report cover-to-cover. Start with Apple or Microsoft — they're exceptionally well-written. Notice what data they include and what they leave out.</p></li>
+      <li class="cta-step"><span class="cta-step-num" aria-hidden="true">2</span><p>Enrol in the <strong>CFA Certificate in ESG Investing</strong> or the <strong>GRI Learning Platform</strong> (free intro modules). Get the vocabulary down — it opens doors immediately.</p></li>
+      <li class="cta-step"><span class="cta-step-num" aria-hidden="true">3</span><p>Follow 5 ESG practitioners on LinkedIn. KPMG's ESG practice, MSCI ESG Research, PRI, and CDP all share excellent explainers. Engage with the content.</p></li>
+      <li class="cta-step"><span class="cta-step-num" aria-hidden="true">4</span><p>Pick one company you find interesting and write a 500-word ESG analysis. What are their material ESG risks? What are they disclosing well? What's missing? This becomes a portfolio piece.</p></li>
+      <li class="cta-step"><span class="cta-step-num" aria-hidden="true">5</span><p>Message one person working in ESG on LinkedIn — a genuine question about their day-to-day. Most people in this field are generous with their time. Informational interviews lead to referrals.</p></li>
+    </ol>
+    <blockquote class="cta-note"><p>"All forms of information are out there — it is just about the means of seeking the knowledge." — KPMG ESG Consultant (on transitioning careers into sustainability)</p></blockquote>
+  </div>
+</section>
+
+</main>
+
+<!-- ─── FOOTER ────────────────────────── -->
+<footer class="site-footer">
+  <p>ESG Career Guide &middot; 2025 Edition</p>
+</footer>
+
+<script>
+// ─── PROGRESS BAR ────────────────────────
+// rAF gate: scroll events can fire many times per frame.
+// `ticking` ensures we schedule at most one rAF per frame —
+// the actual DOM write happens once, at the browser's optimal paint moment.
+const progressBar = document.getElementById('progress-bar');
+let   ticking     = false;
+
+function updateProgressBar() {
+  const scrollTop  = window.scrollY;
+  const docHeight  = document.documentElement.scrollHeight - window.innerHeight;
+  const progress   = docHeight > 0 ? scrollTop / docHeight : 0;
+  progressBar.style.transform = `scaleX(${progress})`;
+  progressBar.setAttribute('aria-valuenow', Math.round(progress * 100));
+  ticking = false;
+}
+
+window.addEventListener('scroll', () => {
+  if (!ticking) {
+    requestAnimationFrame(updateProgressBar);
+    ticking = true;
+  }
+}, { passive: true });
+
+// ─── THEME TOGGLE ────────────────────────
+// Priority:
+//   1. Explicit user choice stored in localStorage   (sticky across visits)
+//   2. OS preference via prefers-color-scheme        (first-visit default)
+//   3. Dark mode                                     (hard fallback)
+const toggle = document.getElementById('theme-toggle');
+const htmlEl = document.documentElement;
+const mq     = window.matchMedia('(prefers-color-scheme: light)');
+
+function applyTheme(isLight) {
+  htmlEl.classList.toggle('light', isLight);
+  // aria-label describes the action (what clicking will do), not the current state
+  toggle.setAttribute('aria-label', isLight ? 'Switch to dark mode' : 'Switch to light mode');
+}
+
+const saved = localStorage.getItem('esg-theme');
+if (saved) {
+  // Explicit user preference always wins
+  applyTheme(saved === 'light');
+} else {
+  // No stored preference — mirror the OS setting
+  applyTheme(mq.matches);
+}
+
+toggle.addEventListener('click', () => {
+  const nowLight = !htmlEl.classList.contains('light');
+  applyTheme(nowLight);
+  localStorage.setItem('esg-theme', nowLight ? 'light' : 'dark');
+});
+
+// If no stored preference, follow OS theme changes live
+// (e.g. user switches macOS to dark mode while the page is open)
+mq.addEventListener('change', e => {
+  if (!localStorage.getItem('esg-theme')) applyTheme(e.matches);
+});
+
+// ─── DAY-IN-LIFE TABS ────────────────────
+// Implements the ARIA Tabs keyboard pattern:
+//   Tab       → moves focus into/out of the tablist as one stop
+//   ArrowRight/ArrowLeft → cycles between tabs (roving tabindex)
+//   Home/End  → jumps to first/last tab
+//   Space/Enter → already handled natively by <button>
+(function () {
+  const tablist  = document.querySelector('[role="tablist"]');
+  const tabs     = Array.from(tablist.querySelectorAll('[role="tab"]'));
+
+  function activateTab(tab) {
+    // Deactivate all
+    tabs.forEach(t => {
+      t.classList.remove('active');
+      t.setAttribute('aria-selected', 'false');
+      t.setAttribute('tabindex', '-1');
+    });
+    document.querySelectorAll('.day-content').forEach(c => c.classList.remove('active'));
+
+    // Activate selected
+    tab.classList.add('active');
+    tab.setAttribute('aria-selected', 'true');
+    tab.setAttribute('tabindex', '0');
+    document.getElementById('day-' + tab.dataset.role).classList.add('active');
+  }
+
+  // Click — delegate on tablist so SVG child clicks are caught
+  tablist.addEventListener('click', e => {
+    const tab = e.target.closest('[role="tab"]');
+    if (tab) {
+      activateTab(tab);
+      tab.focus();
+    }
+  });
+
+  // Keyboard — arrow keys, Home, End
+  tablist.addEventListener('keydown', e => {
+    const current = tabs.indexOf(document.activeElement);
+    if (current === -1) return;
+
+    let next = -1;
+    if (e.key === 'ArrowRight') next = (current + 1) % tabs.length;
+    if (e.key === 'ArrowLeft')  next = (current - 1 + tabs.length) % tabs.length;
+    if (e.key === 'Home')       next = 0;
+    if (e.key === 'End')        next = tabs.length - 1;
+
+    if (next !== -1) {
+      e.preventDefault();          // stop page scroll on arrow/end keys
+      activateTab(tabs[next]);
+      tabs[next].focus();
+    }
+  });
+}());
+
+// ─── REVEAL ON SCROLL ────────────────────
+// Fallback: if IntersectionObserver is unavailable, mark everything
+// visible immediately so no content is ever hidden from the user.
+if (!('IntersectionObserver' in window)) {
+  document.querySelectorAll(
+    '.reveal, .esg-pillar, .case-card, .skill-card, .career-step, .cert-card, .hiring-tile, .myth-card'
+  ).forEach(el => {
+    el.classList.add('reveal', 'visible');
+  });
+} else {
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target); // stop watching once revealed
+      }
+    });
+  }, {
+    threshold: 0.08,
+    rootMargin: '0px 0px -40px 0px' // don't trigger in the last 40px of viewport
+  });
+
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+  document.querySelectorAll(
+    '.esg-pillar, .case-card, .skill-card, .career-step, .cert-card, .hiring-tile, .myth-card'
+  ).forEach((el, i) => {
+    el.classList.add('reveal');
+    el.style.transitionDelay = (i % 4) * 0.08 + 's';
+    observer.observe(el);
+  });
+}
+</script>
+</body>
+</html>
