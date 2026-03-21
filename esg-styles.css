@@ -432,6 +432,9 @@ html.light .chapter-break-text span { color: var(--sprout-text); }
   border-top: 1px solid var(--border-subtle);
   transition: background 0.4s;
 }
+html.light .esg-explainer {
+  background: var(--bg-section-b);
+}
 /* Subtle crosshatch pattern */
 .esg-explainer::before {
   content: ''; position: absolute; inset: 0; pointer-events: none;
@@ -445,6 +448,10 @@ html.light .chapter-break-text span { color: var(--sprout-text); }
 .esg-explainer .section-h2 { color: #fff; }
 .esg-explainer .section-label { color: var(--amber); }
 .esg-explainer .section-label::before { background: var(--amber); }
+html.light .esg-explainer .section-h2 { color: var(--text-heading); }
+html.light .esg-explainer .section-lead { color: var(--text-secondary); }
+html.light .esg-explainer .section-label { color: var(--amber-text); }
+html.light .esg-explainer .section-label::before { background: var(--amber-text); }
 
 /* Pillar grid */
 .esg-three {
@@ -476,6 +483,12 @@ html.light .chapter-break-text span { color: var(--sprout-text); }
   bottom: -10px; right: 10px; pointer-events: none;
 }
 html.light .pillar-letter { opacity: 0.18; }
+html.light .esg-pillar {
+  border: 1px solid var(--border-card);
+}
+html.light .esg-pillar:nth-child(1) { background: var(--pillar-e); }
+html.light .esg-pillar:nth-child(2) { background: var(--pillar-s); }
+html.light .esg-pillar:nth-child(3) { background: var(--pillar-g); }
 .esg-pillar:nth-child(1) .pillar-letter { color: var(--sprout); }
 .esg-pillar:nth-child(2) .pillar-letter { color: var(--amber); }
 .esg-pillar:nth-child(3) .pillar-letter { color: var(--sky); }
@@ -689,11 +702,20 @@ html.light .result-pill { color: var(--sprout-text); border-color: var(--sprout-
   padding: var(--space-section) 24px; background: var(--ink);
   border-top: 1px solid var(--border-subtle); transition: background 0.4s;
 }
+/* Light mode: switch skills section to a light surface */
+html.light .skills-section {
+  background: var(--bg-section-d);
+  border-top-color: var(--border-subtle);
+}
 .skills-inner { max-width: 1200px; margin: 0 auto; }
 .skills-inner .section-h2 { color: #fff; }
 .skills-inner .section-lead { color: rgba(255,255,255,0.68); }
 .skills-inner .section-label { color: var(--sky); }
 .skills-inner .section-label::before { background: var(--sky); }
+html.light .skills-inner .section-h2 { color: var(--text-heading); }
+html.light .skills-inner .section-lead { color: var(--text-secondary); }
+html.light .skills-inner .section-label { color: var(--sprout-text); }
+html.light .skills-inner .section-label::before { background: var(--sprout-text); }
 
 .skills-grid {
   display: grid; grid-template-columns: repeat(3,1fr); gap: var(--gap-sm);
@@ -703,9 +725,17 @@ html.light .result-pill { color: var(--sprout-text); border-color: var(--sprout-
   border-radius: 2px; padding: 28px 24px;
   transition: border-color 0.25s, background 0.2s;
 }
-.skill-card:hover { background: rgba(255,255,255,0.06); border-color: rgba(74,158,92,0.4); }
-html.light .skill-card { background: rgba(46,83,57,0.08); border-color: rgba(46,83,57,0.20); }
-html.light .skill-card:hover { background: rgba(46,83,57,0.12); }
+.skill-card:hover { background: rgba(255,255,255,0.09); border-color: rgba(74,158,92,0.5); }
+html.light .skill-card {
+  background: #ffffff;
+  border: 1px solid var(--border-card);
+  box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+}
+html.light .skill-card:hover {
+  background: #ffffff;
+  border-color: var(--sprout-text);
+  box-shadow: 0 6px 24px rgba(0,0,0,0.1);
+}
 
 .icon--skill { width: 1.75rem; height: 1.75rem; color: var(--sprout); margin-bottom: 16px; display: block; }
 html.light .icon--skill { color: var(--sprout-text); }
@@ -722,7 +752,7 @@ html.light .skill-name { color: var(--text-heading); }
 }
 html.light .skill-level { color: var(--text-muted); }
 .skill-bar-wrap {
-  background: rgba(255,255,255,0.08); border-radius: 1px; height: 3px; margin-bottom: 12px; overflow: hidden;
+  background: rgba(255,255,255,0.08); border-radius: 1px; height: 4px; margin-bottom: 14px; overflow: hidden;
 }
 html.light .skill-bar-wrap { background: rgba(46,83,57,0.12); }
 .skill-bar { height: 100%; border-radius: 1px; background: linear-gradient(90deg, var(--sprout), var(--lime)); width: var(--bar-width, 0%); transition: width 1.2s cubic-bezier(0.16,1,0.3,1); }
@@ -840,6 +870,10 @@ html.light .cert-pill--sprout { color: var(--sprout-text); border-color: var(--s
   border-top: 1px solid var(--border-subtle); transition: background 0.4s;
   position: relative;
 }
+html.light .hiring-section {
+  background: var(--bg-section-a);
+  border-top-color: var(--border-subtle);
+}
 /* Blueprint dot grid */
 .hiring-section::before {
   content: ''; position: absolute; inset: 0; pointer-events: none;
@@ -851,6 +885,8 @@ html.light .cert-pill--sprout { color: var(--sprout-text); border-color: var(--s
 .hiring-inner .section-lead { color: rgba(255,255,255,0.68); }
 .hiring-inner .section-label { color: var(--amber); }
 .hiring-inner .section-label::before { background: var(--amber); }
+html.light .hiring-inner .section-h2 { color: var(--text-heading); }
+html.light .hiring-inner .section-lead { color: var(--text-secondary); }
 html.light .hiring-inner .section-label { color: var(--amber-text); }
 html.light .hiring-inner .section-label::before { background: var(--amber-text); }
 
@@ -877,6 +913,7 @@ html.light .hiring-inner .section-label::before { background: var(--amber-text);
   font-weight: 800; color: #fff; margin-bottom: 12px; letter-spacing: -0.01em;
 }
 html.light .tile-title { color: var(--text-heading); }
+html.light .icon--tile { color: var(--sprout-text); }
 .tile-desc { font-size: var(--text-sm); color: rgba(255,255,255,0.78); line-height: 1.7; margin-bottom: 22px; }
 html.light .tile-desc { color: var(--text-secondary); }
 .tile-companies { display: flex; flex-direction: column; gap: 8px; list-style: none; }
