@@ -10,10 +10,10 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="dns-prefetch" href="https://fonts.gstatic.com">
 <!-- Local CSS: preload then apply; as="style" + onload pattern avoids render-blocking -->
-<link rel="preload" href="esg-styles.min.css" as="style">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=Bricolage+Grotesque:opsz,wght@12..96,300;12..96,400;12..96,500;12..96,600;12..96,700&display=swap">
-<link rel="stylesheet" href="esg-styles.min.css">
-<!-- Dev reference: esg-styles.css (readable source) | esg-styles.min.css (production, 25% smaller) -->
+<link rel="preload" href="esg-styles-enhanced.css" as="style">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=Bricolage+Grotesque:opsz,wght@12..96,300;12..96,400;12..96,500;12..96,600;12..96,700&family=JetBrains+Mono:wght@400;700&display=swap">
+<link rel="stylesheet" href="esg-styles-enhanced.css">
+<!-- Enhanced stylesheet: esg-styles-enhanced.css -->
 <!-- Font detection: uses FontFace .load() to confirm Syne 800 is available -->
 <script>
 (function() {
@@ -68,29 +68,37 @@
   <p class="hero-sub">A plain-English guide to one of the fastest-growing career fields on the planet — with real jobs, real salaries, and real case studies.</p>
   <div class="hero-stats" role="list" aria-label="ESG industry statistics">
     <div class="hero-stat" role="listitem">
-      <p class="hero-stat-num">$50T</p>
+      <p class="hero-stat-num" data-target="50" data-prefix="$" data-suffix="T">$50T</p>
       <p class="hero-stat-label">ESG assets by 2025</p>
     </div>
     <div class="hero-stat" role="listitem">
-      <p class="hero-stat-num">$36B</p>
+      <p class="hero-stat-num" data-target="36" data-prefix="$" data-suffix="B">$36B</p>
       <p class="hero-stat-label">ESG consulting market</p>
     </div>
     <div class="hero-stat" role="listitem">
-      <p class="hero-stat-num">99%</p>
+      <p class="hero-stat-num" data-target="99" data-suffix="%">99%</p>
       <p class="hero-stat-label">S&amp;P 500 publish ESG reports</p>
     </div>
     <div class="hero-stat" role="listitem">
-      <p class="hero-stat-num">+40%</p>
+      <p class="hero-stat-num" data-target="40" data-prefix="+" data-suffix="%">+40%</p>
       <p class="hero-stat-label">Job growth 2021–2023</p>
     </div>
   </div>
-  <div class="scroll-hint" aria-hidden="true">
+  <div class="hero-chapter-line" aria-hidden="true">
     <span>Scroll to explore</span>
-    <svg class="scroll-chevron" viewBox="0 0 22 14" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <path d="M1 1L11 11L21 1" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-    </svg>
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
   </div>
 </header>
+
+<!-- ─── CHAPTER BREAK ────────────────────── -->
+<div class="chapter-break" aria-hidden="true">
+  <div class="chapter-break-inner">
+    <p class="chapter-break-text">
+      ESG Careers 2025 &nbsp;·&nbsp; <span>Environmental</span> &nbsp;·&nbsp; Social &nbsp;·&nbsp; Governance &nbsp;·&nbsp; <span>$50T in assets</span> &nbsp;·&nbsp; 40% job growth &nbsp;·&nbsp; <span>Real salaries</span> &nbsp;·&nbsp; Real roles &nbsp;·&nbsp; Real case studies &nbsp;·&nbsp;
+      ESG Careers 2025 &nbsp;·&nbsp; <span>Environmental</span> &nbsp;·&nbsp; Social &nbsp;·&nbsp; Governance &nbsp;·&nbsp; <span>$50T in assets</span> &nbsp;·&nbsp; 40% job growth &nbsp;·&nbsp; <span>Real salaries</span> &nbsp;·&nbsp; Real roles &nbsp;·&nbsp; Real case studies &nbsp;·&nbsp;
+    </p>
+  </div>
+</div>
 
 <main id="main-content">
 
@@ -712,6 +720,47 @@ if (!('IntersectionObserver' in window)) {
     observer.observe(el);
   });
 }
+
+// ─── ANIMATED STAT COUNTERS ──────────────
+// Counts up from 0 when the hero stats enter the viewport
+(function() {
+  const stats = document.querySelectorAll('.hero-stat-num[data-target]');
+  if (!stats.length) return;
+
+  function easeOut(t) { return 1 - Math.pow(1 - t, 3); }
+
+  function animateCounter(el) {
+    const target   = parseFloat(el.dataset.target);
+    const prefix   = el.dataset.prefix  || '';
+    const suffix   = el.dataset.suffix  || '';
+    const duration = 1600;
+    const start    = performance.now();
+
+    function tick(now) {
+      const elapsed  = now - start;
+      const progress = Math.min(elapsed / duration, 1);
+      const value    = Math.round(easeOut(progress) * target);
+      el.textContent = prefix + value + suffix;
+      if (progress < 1) requestAnimationFrame(tick);
+    }
+    requestAnimationFrame(tick);
+  }
+
+  // Trigger once when hero stats are visible
+  if ('IntersectionObserver' in window) {
+    const io = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          stats.forEach(animateCounter);
+          io.disconnect();
+        }
+      });
+    }, { threshold: 0.5 });
+    io.observe(document.querySelector('.hero-stats'));
+  } else {
+    stats.forEach(animateCounter);
+  }
+}());
 </script>
 </body>
 </html>
