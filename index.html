@@ -11,22 +11,22 @@
 <link rel="dns-prefetch" href="https://fonts.gstatic.com">
 <!-- Local CSS: preload then apply; as="style" + onload pattern avoids render-blocking -->
 <link rel="preload" href="esg-styles-enhanced.css" as="style">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=Bricolage+Grotesque:opsz,wght@12..96,300;12..96,400;12..96,500;12..96,600;12..96,700&family=JetBrains+Mono:wght@400;700&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Bricolage+Grotesque:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;700&display=swap">
 <link rel="stylesheet" href="esg-styles-enhanced.css">
 <!-- Enhanced stylesheet: esg-styles-enhanced.css -->
-<!-- Font detection: uses FontFace .load() to confirm Syne 800 is available -->
+<!-- Font detection: uses FontFace .load() to confirm Plus Jakarta Sans 800 is available -->
 <script>
 (function() {
   var html = document.documentElement;
   // Instant check — already cached on return visits
-  if (document.fonts && document.fonts.check && document.fonts.check('800 16px Syne')) {
+  if (document.fonts && document.fonts.check && document.fonts.check('800 16px Plus Jakarta Sans')) {
     html.classList.add('fonts-loaded');
     return;
   }
-  // Load Syne 800 explicitly and mark ready when confirmed
+  // Load Plus Jakarta Sans 800 explicitly and mark ready when confirmed
   var timeout = setTimeout(function() { html.classList.add('fonts-loaded'); }, 3000);
   if (document.fonts && document.fonts.load) {
-    document.fonts.load('800 16px Syne').then(function(fonts) {
+    document.fonts.load('800 16px Plus Jakarta Sans').then(function(fonts) {
       clearTimeout(timeout);
       html.classList.add('fonts-loaded');
     }).catch(function() {

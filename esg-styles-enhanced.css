@@ -1,7 +1,7 @@
 /* ══════════════════════════════════════════════════════════════════
    ESG CAREER GUIDE — ENHANCED STYLESHEET
    Aesthetic: Editorial magazine × sustainability data terminal
-   Fonts: Syne (display) + Bricolage Grotesque (body)
+   Fonts: Plus Jakarta Sans (display) + Bricolage Grotesque (body)
    ══════════════════════════════════════════════════════════════════ */
 
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -57,7 +57,7 @@
   --text-reality:   #88b898;
 
   /* Type scale */
-  --font-display: 'Syne', 'Georgia', serif;
+  --font-display: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
   --font-body:    'Bricolage Grotesque', sans-serif;
   --font-mono:    'JetBrains Mono', 'Courier New', monospace;
 
@@ -220,7 +220,7 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-/* Fonts-loaded: display headings hidden until Syne confirmed */
+/* Fonts-loaded: display headings hidden until Plus Jakarta Sans confirmed */
 .hero h1, .section-h2, .cta-h2 {
   opacity: 0.001; transition: opacity 0.3s ease;
 }
@@ -228,6 +228,13 @@ html.fonts-loaded .hero h1,
 html.fonts-loaded .section-h2,
 html.fonts-loaded .cta-h2 { opacity: 1; }
 
+
+/* Explicit font-stretch reset — prevents any inherited stretch from
+   variable font axes on all heading elements */
+h1, h2, h3, h4, h5, h6, .hero h1, .section-h2, .cta-h2 {
+  font-stretch: normal;
+  font-optical-sizing: auto;
+}
 /* ── SECTION ATOMS ─────────────────────────────────────────────── */
 .section-label {
   display: inline-flex; align-items: center; gap: 10px;
