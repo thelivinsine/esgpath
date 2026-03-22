@@ -432,9 +432,7 @@ html.light .chapter-break-text span { color: var(--sprout-text); }
   border-top: 1px solid var(--border-subtle);
   transition: background 0.4s;
 }
-html.light .esg-explainer {
-  background: var(--bg-section-b);
-}
+html.light .esg-explainer { background: #eaf5ef; }
 /* Subtle crosshatch pattern */
 .esg-explainer::before {
   content: ''; position: absolute; inset: 0; pointer-events: none;
@@ -448,10 +446,10 @@ html.light .esg-explainer {
 .esg-explainer .section-h2 { color: #fff; }
 .esg-explainer .section-label { color: var(--amber); }
 .esg-explainer .section-label::before { background: var(--amber); }
-html.light .esg-explainer .section-h2 { color: var(--text-heading); }
-html.light .esg-explainer .section-lead { color: var(--text-secondary); }
-html.light .esg-explainer .section-label { color: var(--amber-text); }
-html.light .esg-explainer .section-label::before { background: var(--amber-text); }
+html.light .esg-explainer .section-h2 { color: #081408; }
+html.light .esg-explainer .section-lead { color: #1e5030; }
+html.light .esg-explainer .section-label { color: #8a5c10; }
+html.light .esg-explainer .section-label::before { background: #8a5c10; }
 
 /* Pillar grid */
 .esg-three {
@@ -702,20 +700,22 @@ html.light .result-pill { color: var(--sprout-text); border-color: var(--sprout-
   padding: var(--space-section) 24px; background: var(--ink);
   border-top: 1px solid var(--border-subtle); transition: background 0.4s;
 }
-/* Light mode: switch skills section to a light surface */
-html.light .skills-section {
-  background: var(--bg-section-d);
-  border-top-color: var(--border-subtle);
-}
 .skills-inner { max-width: 1200px; margin: 0 auto; }
 .skills-inner .section-h2 { color: #fff; }
 .skills-inner .section-lead { color: rgba(255,255,255,0.68); }
 .skills-inner .section-label { color: var(--sky); }
 .skills-inner .section-label::before { background: var(--sky); }
-html.light .skills-inner .section-h2 { color: var(--text-heading); }
-html.light .skills-inner .section-lead { color: var(--text-secondary); }
-html.light .skills-inner .section-label { color: var(--sprout-text); }
-html.light .skills-inner .section-label::before { background: var(--sprout-text); }
+
+/* Light mode skills — hardcoded light surface, not relying solely on tokens */
+html.light .skills-section { background: #eef8f2; }
+html.light .skills-inner .section-h2 { color: #081408; }
+html.light .skills-inner .section-lead { color: #1e5030; }
+html.light .skills-inner .section-label { color: #3a7348; }
+html.light .skills-inner .section-label::before { background: #3a7348; }
+
+@media (prefers-color-scheme: light) {
+  html:not(.light-overridden) .skills-section { background: #eef8f2; }
+}
 
 .skills-grid {
   display: grid; grid-template-columns: repeat(3,1fr); gap: var(--gap-sm);
@@ -727,37 +727,37 @@ html.light .skills-inner .section-label::before { background: var(--sprout-text)
 }
 .skill-card:hover { background: rgba(255,255,255,0.09); border-color: rgba(74,158,92,0.5); }
 html.light .skill-card {
-  background: #ffffff;
-  border: 1px solid var(--border-card);
-  box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+  background: #ffffff !important;
+  border: 1px solid #a8ceba !important;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.08);
 }
 html.light .skill-card:hover {
-  background: #ffffff;
-  border-color: var(--sprout-text);
-  box-shadow: 0 6px 24px rgba(0,0,0,0.1);
+  background: #f4fbf6 !important;
+  border-color: #3a7348 !important;
+  box-shadow: 0 6px 24px rgba(0,0,0,0.12);
 }
 
 .icon--skill { width: 1.75rem; height: 1.75rem; color: var(--sprout); margin-bottom: 16px; display: block; }
-html.light .icon--skill { color: var(--sprout-text); }
+html.light .icon--skill { color: #3a7348; }
 
 .skill-name {
   font-family: var(--font-display); font-size: var(--text-md);
   font-weight: 700; color: #eaf5ee; margin-bottom: 8px;
   letter-spacing: -0.01em;
 }
-html.light .skill-name { color: var(--text-heading); }
+html.light .skill-name { color: #081408; }
 .skill-level {
   font-size: var(--text-xs); color: rgba(255,255,255,0.62);
   text-transform: uppercase; letter-spacing: 0.12em; font-weight: 600; margin-bottom: 8px;
 }
-html.light .skill-level { color: var(--text-muted); }
+html.light .skill-level { color: #496a56; }
 .skill-bar-wrap {
   background: rgba(255,255,255,0.08); border-radius: 1px; height: 4px; margin-bottom: 14px; overflow: hidden;
 }
-html.light .skill-bar-wrap { background: rgba(46,83,57,0.12); }
+html.light .skill-bar-wrap { background: rgba(46,83,57,0.15); }
 .skill-bar { height: 100%; border-radius: 1px; background: linear-gradient(90deg, var(--sprout), var(--lime)); width: var(--bar-width, 0%); transition: width 1.2s cubic-bezier(0.16,1,0.3,1); }
 .skill-desc { font-size: var(--text-sm); color: rgba(255,255,255,0.65); line-height: 1.65; }
-html.light .skill-desc { color: var(--text-secondary); }
+html.light .skill-desc { color: #1e5030; }
 
 /* ══════════════════════════════════════════════════════════════════
    CAREER LADDER
@@ -870,10 +870,7 @@ html.light .cert-pill--sprout { color: var(--sprout-text); border-color: var(--s
   border-top: 1px solid var(--border-subtle); transition: background 0.4s;
   position: relative;
 }
-html.light .hiring-section {
-  background: var(--bg-section-a);
-  border-top-color: var(--border-subtle);
-}
+html.light .hiring-section { background: #f8f4ee; }
 /* Blueprint dot grid */
 .hiring-section::before {
   content: ''; position: absolute; inset: 0; pointer-events: none;
@@ -885,10 +882,10 @@ html.light .hiring-section {
 .hiring-inner .section-lead { color: rgba(255,255,255,0.68); }
 .hiring-inner .section-label { color: var(--amber); }
 .hiring-inner .section-label::before { background: var(--amber); }
-html.light .hiring-inner .section-h2 { color: var(--text-heading); }
-html.light .hiring-inner .section-lead { color: var(--text-secondary); }
-html.light .hiring-inner .section-label { color: var(--amber-text); }
-html.light .hiring-inner .section-label::before { background: var(--amber-text); }
+html.light .hiring-inner .section-h2 { color: #081408; }
+html.light .hiring-inner .section-lead { color: #1e5030; }
+html.light .hiring-inner .section-label { color: #8a5c10; }
+html.light .hiring-inner .section-label::before { background: #8a5c10; }
 
 .hiring-tiles { display: grid; grid-template-columns: repeat(2,1fr); gap: var(--gap-lg); }
 .hiring-tile {
@@ -1063,7 +1060,7 @@ html.light .icon--reality { color: var(--sprout-text); }
 
 /* ── SVG ICON SYSTEM ─────────────────────────────────────────────── */
 .icon--skill  { width: 1.75rem; height: 1.75rem; color: var(--sprout); margin-bottom: 16px; display: block; }
-html.light .icon--skill { color: var(--sprout-text); }
+html.light .icon--skill { color: #3a7348; }
 .icon--tile   { width: 2rem; height: 2rem; color: rgba(255,255,255,0.55); margin-bottom: 20px; display: block; }
 
 /* ── REVEAL ANIMATION ────────────────────────────────────────────── */
